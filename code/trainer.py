@@ -250,12 +250,13 @@ class condGANTrainer(object):
 
         gen_iterations = 0
         # gen_iterations = start_epoch * self.num_batches
-        for epoch in tqdm.tqdm(range(start_epoch, self.max_epoch)):
+        for epoch in range(start_epoch, self.max_epoch):
             start_t = time.time()
 
             data_iter = iter(self.data_loader)
             step = 0
-            while step < self.num_batches:
+            # while step < self.num_batches:
+            for step in tqdm.tqdm(range(self.num_batches)):
                 start_t = time.time()
                 # reset requires_grad to be trainable for all Ds
                 # self.set_requires_grad_value(netsD, True)
@@ -307,7 +308,7 @@ class condGANTrainer(object):
                 # (4) Update G network: maximize log(D(G(z)))
                 ######################################################
                 # compute total loss for training G
-                step += 1
+                # step += 1
                 gen_iterations += 1
 
                 # do not need to compute gradient for Ds
