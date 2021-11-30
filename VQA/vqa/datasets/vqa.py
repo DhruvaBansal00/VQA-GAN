@@ -249,8 +249,8 @@ class VQAVisualGenome(data.Dataset):
 def factory(data_split, opt, opt_coco=None, opt_vgenome=None):
     dataset_img = None
 
-    if opt_coco is not None:
-        dataset_img = coco.factory(data_split, opt_coco)
+    # if opt_coco is not None:
+    #     dataset_img = coco.factory(data_split, opt_coco)
 
     if opt['dataset'] == 'VQA' and '2' not in opt['dir']: # sanity check
         dataset_vqa = VQA(data_split, opt, dataset_img)
