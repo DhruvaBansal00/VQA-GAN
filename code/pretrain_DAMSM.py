@@ -20,7 +20,6 @@ import dateutil.tz
 import argparse
 import numpy as np
 from PIL import Image
-import tqdm
 
 import torch
 import torch.nn as nn
@@ -72,7 +71,7 @@ def train(
     w_total_loss1 = 0
     count = (epoch + 1) * len(dataloader)
     start_time = time.time()
-    for step, data in tqdm.tqdm(enumerate(dataloader, 0)):
+    for step, data in enumerate(dataloader, 0):
         rnn_model.zero_grad()
         cnn_model.zero_grad()
 
