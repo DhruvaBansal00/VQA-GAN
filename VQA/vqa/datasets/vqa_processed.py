@@ -159,6 +159,7 @@ def vqa_processed(params):
     # An example is a tuple (question, image, answer)
     # /!\ test and test-dev have no answer
     trainset = json.load(open(path_train, 'r'))
+
     if params['trainsplit'] == 'train':
         valset = json.load(open(path_val, 'r'))
     testset    = json.load(open(path_test, 'r'))

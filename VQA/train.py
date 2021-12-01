@@ -333,6 +333,7 @@ def load_checkpoint(model, optimizer, path_ckpt):
     path_ckpt_info  = path_ckpt + '_info.pth.tar'
     path_ckpt_model = path_ckpt + '_model.pth.tar'
     path_ckpt_optim = path_ckpt + '_optim.pth.tar'
+    print(path_ckpt_info)
     if os.path.isfile(path_ckpt_info):
         info = torch.load(path_ckpt_info)
         start_epoch = 0

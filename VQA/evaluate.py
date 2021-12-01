@@ -126,19 +126,21 @@ def main():
                                     options['vqa'],
                                     options['coco'],
                                     options['vgenome'])
-    train_loader = trainset.data_loader(batch_size=options['optim']['batch_size'],
-                                        num_workers=args.workers,
-                                        shuffle=True)                                      
 
-    if options['vqa']['trainsplit'] == 'train':
-        valset = datasets.factory_VQA('val', options['vqa'], options['coco'])
-        val_loader = valset.data_loader(batch_size=options['optim']['batch_size'],
-                                        num_workers=args.workers)
+    # print(trainset)
+    # train_loader = trainset.data_loader(batch_size=options['optim']['batch_size'],
+    #                                     num_workers=args.workers,
+    #                                     shuffle=True)                                      
 
-    if options['vqa']['trainsplit'] == 'trainval' or args.evaluate:
-        testset = datasets.factory_VQA('test', options['vqa'], options['coco'])
-        test_loader = testset.data_loader(batch_size=options['optim']['batch_size'],
-                                          num_workers=args.workers)
+    # if options['vqa']['trainsplit'] == 'train':
+    #     valset = datasets.factory_VQA('val', options['vqa'], options['coco'])
+    #     val_loader = valset.data_loader(batch_size=options['optim']['batch_size'],
+    #                                     num_workers=args.workers)
+
+    # if options['vqa']['trainsplit'] == 'trainval' or args.evaluate:
+    #     testset = datasets.factory_VQA('test', options['vqa'], options['coco'])
+    #     test_loader = testset.data_loader(batch_size=options['optim']['batch_size'],
+    #                                       num_workers=args.workers)
     
     #########################################################################################
     # Create model, criterion and optimizer
@@ -152,7 +154,6 @@ def main():
     # print([key for key in torch.load('models/vqa2/mutan_att_train/best_model.pth.tar')])
     unwrapped_state_dict = torch.load('models/vqa2/mutan_att_train/best_model.pth.tar')
     wrapped_state_dict = {"module." + key : unwrapped_state_dict[key] for key in unwrapped_state_dict}
-    print(wrapped_state_dict)
     model.load_state_dict(wrapped_state_dict)
     print(model)
 

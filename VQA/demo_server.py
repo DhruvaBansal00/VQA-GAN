@@ -31,13 +31,13 @@ parser.add_argument('--dir_logs', type=str,
     help='dir logs')
 parser.add_argument('--path_opt', type=str,
     #default='logs/vqa2/blocmutan_noatt_fbresnet152torchported_save_all/blocmutan_noatt.yaml',
-    default='logs/vqa2/mutan_att_train/mutan_att_train.yaml',
+    default='options/vqa2/mutan_att_train.yaml',
     help='path to a yaml options file')
 parser.add_argument('--resume', type=str,
-    default='best',
+    default='ckpt',
     help='path to latest checkpoint')
 parser.add_argument('--cuda', type=bool,
-    const=True,
+    const=False,
     nargs='?',
     help='path to latest checkpoint')
 
@@ -47,7 +47,9 @@ def application(request):
     if 'visual' in request.form and 'question' in request.form:
         visual = process_visual(request.form['visual'])
         question = process_question(request.form['question'])
+        print("visual size = ", visual.shape, "question size = ", question.shape)
         answer = process_answer(model(visual, question))
+        print(answer)
         response = Response(answer)
     
     elif 'question' not in request.form:
@@ -77,7 +79,7 @@ def process_visual(visual_strb64):
     visual_data[0][2] = visual_tensor[2]
     print('visual', visual_data.size(), visual_data.mean())
     if args.cuda:
-        visual_data = visual_data.cuda(async=True)
+        visual_data = visual_data.cuda(non_blocking=True)
     visual_input = Variable(visual_data, volatile=True)
     visual_features = cnn(visual_input)
     if 'NoAtt' in options['model']['arch']:
@@ -94,7 +96,7 @@ def process_question(question_str):
         else:
             question_data[0][i] = trainset.word_to_wid['UNK']
     if args.cuda:
-        question_data = question_data.cuda(async=True)
+        question_data = question_data.cuda(non_blocking=True)
     question_input = Variable(question_data, volatile=True)
     print('question', question_str, question_tokens, question_data)
 
@@ -107,7 +109,7 @@ def process_answer(answer_var):
     val = []
     for i in range(5):
         ans.append(trainset.aid_to_ans[aid.data[i]])
-        val.append(max_.data[i])
+        val.append(max_.data[i].item())
 
     att = []
     for x_att in model.list_att:
@@ -120,6 +122,7 @@ def process_answer(answer_var):
         att.append(img_str)
 
     answer = {'ans':ans,'val':val,'att':att}
+    print(answer['ans'])
     answer_str = json.dumps(answer)
 
     return answer_str
@@ -135,7 +138,7 @@ def main():
     }
     if args.path_opt is not None:
         with open(args.path_opt, 'r') as handle:
-            options_yaml = yaml.load(handle)
+            options_yaml = yaml.safe_load(handle)
         options = utils.update_values(options, options_yaml)
     print('## args'); pprint(vars(args))
     print('## options'); pprint(options)
@@ -166,8 +169,8 @@ def main():
     start_epoch, best_acc1, _ = load_checkpoint(model, None,
             os.path.join(options['logs']['dir_logs'], args.resume))
 
-    my_local_ip = '192.168.0.32'
-    my_local_port = 3456
+    my_local_ip = '0.0.0.0'
+    my_local_port = 8080
     run_simple(my_local_ip, my_local_port, application)
 
 if __name__ == '__main__':

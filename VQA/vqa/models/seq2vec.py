@@ -10,6 +10,9 @@ import skipthoughts
 
 def process_lengths(input):
     max_length = input.size(1)
+    # import pdb
+    # pdb.set_trace()
+    print(input)
     lengths = list(max_length - input.data.eq(0).sum(1).squeeze())
     return lengths
 

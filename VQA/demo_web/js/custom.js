@@ -48,7 +48,7 @@ var formBasic = function () {
         type: 'post',
         data: data,
         dataType: 'json',
-        url: 'http://', // your global ip address and port
+        url: 'http://0.0.0.0:8080', // your global ip address and port
 
         // error: function () {
         //     alert("There was an error processing this page.");
