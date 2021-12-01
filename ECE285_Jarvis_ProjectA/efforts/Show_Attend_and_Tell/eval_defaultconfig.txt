@@ -1,0 +1,65 @@
+cgrandhi@cgrandhi-10672:~/gayatri/show-attend-and-tell$ python main.py --phase=eval --model_file='./models/289999.npy' --beam_size=3
+2019-06-05 19:39:38.982100: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-06-05 19:39:39.467690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:86:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-06-05 19:39:39.467762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-06-05 19:39:40.025327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-06-05 19:39:40.025402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-06-05 19:39:40.025424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-06-05 19:39:40.025952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10407 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:86:00.0, compute capability: 6.1)
+loading annotations into memory...
+Done (t=%0.2fs) 0.4566972255706787
+creating index...
+index created!
+Building the vocabulary...
+Vocabulary built.
+Number of words = 5000
+Building the dataset...
+Dataset built.
+Building the CNN...
+CNN built.
+Building the RNN...
+RNN built.
+Loading the model from ./models/289999.npy...
+100%|#######################################################################################################################################################################| 47/47 [00:04<00:00, 10.14it/s]
+47 tensors loaded.
+Evaluating the model ...
+config.eval_result_dir: ./val/results/
+config.eval_result_file is present
+Loading and preparing results...     
+DONE (t=%0.2fs) 0.1152946949005127
+creating index...
+index created!
+tokenization...
+path_to_jar_dirname issss /datasets/home/home-03/90/890/cgrandhi/gayatri/show-attend-and-tell/utils/coco/pycocoevalcap/tokenizer
+final cmd is ['/datasets/home/90/890/cgrandhi/gayatri/show-attend-and-tell/jre1.8.0_211/bin/java', '-cp', 'stanford-corenlp-3.4.1.jar', 'edu.stanford.nlp.process.PTBTokenizer', '-preserveLines', '-lowerCase', 'tmpunbvdy7w']
+okay
+PTBTokenizer tokenized 2562083 tokens at 1549156.51 tokens per second.
+len is 40504
+path_to_jar_dirname issss /datasets/home/home-03/90/890/cgrandhi/gayatri/show-attend-and-tell/utils/coco/pycocoevalcap/tokenizer
+final cmd is ['/datasets/home/90/890/cgrandhi/gayatri/show-attend-and-tell/jre1.8.0_211/bin/java', '-cp', 'stanford-corenlp-3.4.1.jar', 'edu.stanford.nlp.process.PTBTokenizer', '-preserveLines', '-lowerCase', 'tmpxke6vda4']
+okay
+PTBTokenizer tokenized 443338 tokens at 1061725.00 tokens per second.
+len is 40504
+setting up scorers...
+computing Bleu score...
+{'testlen': 361989, 'reflen': 367304, 'guess': [361989, 321485, 280981, 240477], 'correct': [256253, 130618, 60643, 28275]}
+ratio: 0.9855296974713018
+Bleu_1: 0.698
+Bleu_2: 0.528
+Bleu_3: 0.390
+Bleu_4: 0.288
+computing METEOR score...
+METEOR: 0.232
+computing Rouge score...
+ROUGE_L: 0.514
+computing CIDEr score...
+CIDEr: 0.824
+Evaluation complete.
+cgrandhi@cgrandhi-10672:~/gayatri/show-attend-and-tell$ 
+cgrandhi@cgrandhi-10672:~/gayatri/show-attend-and-tell$ 
+cgrandhi@cgrandhi-10672:~/gayatri/show-attend-and-tell$ 
+cgrandhi@cgrandhi-10672:~/gayatri/show-attend-and-tell$ 
+

@@ -1,0 +1,93 @@
+loading dictionary from data/dictionary.pkl
+loading features from h5 file
+loading features from h5 file
+epoch 0, time: 796.56
+	train_loss: 7.29, score: 42.14
+	eval score: 51.89 (92.66)
+epoch 1, time: 798.64
+	train_loss: 3.85, score: 54.03
+	eval score: 56.66 (92.66)
+epoch 2, time: 792.77
+	train_loss: 3.52, score: 58.37
+	eval score: 59.15 (92.66)
+epoch 3, time: 800.21
+	train_loss: 3.33, score: 61.32
+	eval score: 60.47 (92.66)
+epoch 4, time: 785.06
+	train_loss: 3.18, score: 63.47
+	eval score: 61.35 (92.66)
+epoch 5, time: 776.87
+	train_loss: 3.06, score: 65.30
+	eval score: 61.94 (92.66)
+epoch 6, time: 792.30
+	train_loss: 2.96, score: 67.04
+	eval score: 62.31 (92.66)
+epoch 7, time: 784.45
+	train_loss: 2.87, score: 68.61
+	eval score: 62.77 (92.66)
+epoch 8, time: 791.28
+	train_loss: 2.79, score: 70.06
+	eval score: 63.02 (92.66)
+epoch 9, time: 808.71
+	train_loss: 2.71, score: 71.41
+	eval score: 63.09 (92.66)
+epoch 10, time: 780.51
+	train_loss: 2.64, score: 72.51
+	eval score: 63.29 (92.66)
+epoch 11, time: 785.89
+	train_loss: 2.58, score: 73.71
+	eval score: 63.27 (92.66)
+epoch 12, time: 781.60
+	train_loss: 2.52, score: 74.76
+	eval score: 63.22 (92.66)
+epoch 13, time: 790.09
+	train_loss: 2.46, score: 75.63
+	eval score: 63.35 (92.66)
+epoch 14, time: 784.11
+	train_loss: 2.41, score: 76.48
+	eval score: 63.38 (92.66)
+epoch 15, time: 790.88
+	train_loss: 2.36, score: 77.23
+	eval score: 63.33 (92.66)
+epoch 16, time: 789.50
+	train_loss: 2.32, score: 77.95
+	eval score: 63.23 (92.66)
+epoch 17, time: 785.50
+	train_loss: 2.28, score: 78.56
+	eval score: 63.28 (92.66)
+epoch 18, time: 779.39
+	train_loss: 2.24, score: 79.08
+	eval score: 63.30 (92.66)
+epoch 19, time: 774.90
+	train_loss: 2.21, score: 79.68
+	eval score: 63.27 (92.66)
+epoch 20, time: 777.90
+	train_loss: 2.18, score: 80.10
+	eval score: 63.31 (92.66)
+epoch 21, time: 777.80
+	train_loss: 2.15, score: 80.61
+	eval score: 63.22 (92.66)
+epoch 22, time: 775.59
+	train_loss: 2.12, score: 80.97
+	eval score: 63.14 (92.66)
+epoch 23, time: 781.91
+	train_loss: 2.09, score: 81.39
+	eval score: 63.24 (92.66)
+epoch 24, time: 775.80
+	train_loss: 2.06, score: 81.73
+	eval score: 63.19 (92.66)
+epoch 25, time: 775.40
+	train_loss: 2.04, score: 82.10
+	eval score: 63.10 (92.66)
+epoch 26, time: 778.79
+	train_loss: 2.02, score: 82.44
+	eval score: 63.13 (92.66)
+epoch 27, time: 777.10
+	train_loss: 1.99, score: 82.70
+	eval score: 63.14 (92.66)
+epoch 28, time: 778.81
+	train_loss: 1.97, score: 82.96
+	eval score: 63.04 (92.66)
+epoch 29, time: 776.89
+	train_loss: 1.95, score: 83.27
+	eval score: 63.04 (92.66)

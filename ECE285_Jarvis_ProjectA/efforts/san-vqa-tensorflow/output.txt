@@ -1,0 +1,19 @@
+snagiri@snagiri-1096:~/san-vqa-tensorflow/VQA$ cd PythonEvaluationTools/
+snagiri@snagiri-1096:~/san-vqa-tensorflow/VQA/PythonEvaluationTools$ ls
+OUTPUT.txt  Output.txt	vqaEvalDemo.py	vqaEvaluation
+snagiri@snagiri-1096:~/san-vqa-tensorflow/VQA/PythonEvaluationTools$ 
+snagiri@snagiri-1096:~/san-vqa-tensorflow/VQA/PythonEvaluationTools$ python vqaEvalDemo.py 
+('annfile is $$, quesfile is', '../../VQA/Annotations/mscoco_train2014_annotations.json', '../../VQA/Questions/OpenEnded_mscoco_train2014_questions.json')
+loading VQA annotations and questions into memory...
+0:00:10.975858
+creating index...
+index created!
+('resfile is,', '../../VQA/Results/OpenEnded_mscoco_lstm_results.json')
+Loading and preparing results...     
+Traceback (most recent call last):
+  File "vqaEvalDemo.py", line 35, in <module>
+    vqaRes = vqa.loadRes(resFile, quesFile)
+  File "../../VQA/PythonHelperTools/vqaTools/vqa.py", line 165, in loadRes
+    'Results do not correspond to current VQA set. Either the results do not have predictions for all question ids in annotation file or there is atleast one question id that does not belong to the question ids in the annotation file.'
+AssertionError: Results do not correspond to current VQA set. Either the results do not have predictions for all question ids in annotation file or there is atleast one question id that does not belong to the question ids in the annotation file.
+
