@@ -8,7 +8,7 @@ from miscc.config import cfg, cfg_from_file
 from datasets import TextDataset
 from datasets import prepare_data
 
-from model import RNN_ENCODER, CNN_ENCODER
+from model import RNN_ENCODER, CNN_ENCODER, TRANSFORMER_ENCODER
 
 import os
 import sys
@@ -84,10 +84,11 @@ def train(
         nef, att_sze = words_features.size(1), words_features.size(2)
         # words_features = words_features.view(batch_size, nef, -1)
 
-        hidden = rnn_model.init_hidden(batch_size)
+        # hidden = rnn_model.init_hidden(batch_size)
+        # words_emb, sent_emb = rnn_model(captions, cap_lens, hidden)
         # words_emb: batch_size x nef x seq_len
         # sent_emb: batch_size x nef
-        words_emb, sent_emb = rnn_model(captions, cap_lens, hidden)
+        words_emb, sent_emb = rnn_model(captions)
 
         w_loss0, w_loss1, attn_maps = words_loss(
             words_features, words_emb, labels, cap_lens, class_ids, batch_size
@@ -139,13 +140,13 @@ def train(
             start_time = time.time()
             # attention Maps
 
-            img_set, _ = build_super_images(
-                imgs[-1].cpu(), captions, ixtoword, attn_maps, att_sze
-            )
-            if img_set is not None:
-                im = Image.fromarray(img_set)
-                fullpath = "%s/attention_maps%d.png" % (image_dir, step)
-            im.save(fullpath)
+            # img_set, _ = build_super_images(
+            #     imgs[-1].cpu(), captions, ixtoword, attn_maps, att_sze
+            # )
+            # if img_set is not None:
+            #     im = Image.fromarray(img_set)
+            #     fullpath = "%s/attention_maps%d.png" % (image_dir, step)
+            # im.save(fullpath)
     return count
 
 
@@ -161,8 +162,8 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size):
         # nef = words_features.size(1)
         # words_features = words_features.view(batch_size, nef, -1)
 
-        hidden = rnn_model.init_hidden(batch_size)
-        words_emb, sent_emb = rnn_model(captions, cap_lens, hidden)
+        # hidden = rnn_model.init_hidden(batch_size)
+        words_emb, sent_emb = rnn_model(captions)
 
         w_loss0, w_loss1, attn = words_loss(
             words_features, words_emb, labels, cap_lens, class_ids, batch_size
@@ -183,7 +184,9 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size):
 
 def build_models():
     # build model ############################################################
-    text_encoder = RNN_ENCODER(dataset.n_words, nhidden=cfg.TEXT.EMBEDDING_DIM)
+    # text_encoder = RNN_ENCODER(dataset.n_words, nhidden=cfg.TEXT.EMBEDDING_DIM)
+    
+    text_encoder = TRANSFORMER_ENCODER(dataset.n_words, cfg.TEXT.EMBEDDING_DIM)
     image_encoder = CNN_ENCODER(cfg.TEXT.EMBEDDING_DIM)
     labels = Variable(torch.LongTensor(range(batch_size)))
     start_epoch = 0

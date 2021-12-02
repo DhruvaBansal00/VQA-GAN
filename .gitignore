@@ -1,2 +1,4 @@
 *.zip
 *.zip.1
+VQA/data/vqa2/*
+VQA/data/skip-thoughts/*
